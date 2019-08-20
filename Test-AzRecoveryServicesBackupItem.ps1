@@ -40,6 +40,7 @@ $results.Keys | ForEach-Object {
     Out-Log -message "Validate $vaultName" -Color "white"
 
     $results[$vaultName] | ForEach-Object {
+
         $lastBackupStatus = ""
         if ($_.LastBackupStatus -eq ""){
             $lastBackupStatus = "Nothing"
@@ -48,8 +49,7 @@ $results.Keys | ForEach-Object {
         }
         $msg = " - $($_.Name) is $($_.ProtectionState). Last backup is $($lastBackupStatus) $($_.LastBackupTime)"
 
-        [DateTime]$_.LastBackupTime -gt $now.AddDays(-7)
-
+        $now = Get-Date
         if ($lastBackupStatus -eq "Complete" -or [DateTime]$_.LastBackupTime -gt $now.AddDays(-7) ){
             Out-Log -message $msg -Color "Green"
         } else {
