@@ -7,7 +7,7 @@ This script checks all Recovery Service Vault which you can access to and valida
 - `lastBackupStatus` is not `Complete`
 - `LastBackupTime` is older than 7 days ago.
 
-![](media/image001.png)
+<img src="media/image001.png" width="500">
 
 ## Usage 
 
